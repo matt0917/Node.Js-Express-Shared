@@ -1,0 +1,19 @@
+<h1 class="mt-4">Dashboard</h1>
+<p class="lead mb-3">Welcome <%= user.name %></p>
+<p class="lead mb-3">Current Active Sessions:</p>
+<ul class="list-group">
+  <% Object.entries(sessions).forEach(([key, session]) => { %>
+    <li class="list-group-item">
+      <p>SessionID: <%= key %></p>
+      <% if (session && session.passport && session.passport.user) { %>
+        <% if (typeof session.passport.user === 'object') { %>
+          <p>UserID: <%= session.passport.user.id %></p>
+        <% } else { %>
+          <p>UserID: <%= session.passport.user %></p>
+        <% } %>
+      <% } %>
+      <a href="/admin/revoke-session/<%= key %>" class="btn btn-danger">Revoke Session</a>
+    </li>
+  <% }); %>
+</ul>
+<a href="/auth/logout" class="btn btn-secondary">Logout</a>

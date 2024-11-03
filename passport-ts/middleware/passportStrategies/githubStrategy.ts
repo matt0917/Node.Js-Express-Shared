@@ -24,6 +24,7 @@ const githubStrategy: GitHubStrategy = new GitHubStrategy(
             name: profile.displayName || profile.username || "Unknown User",
             email: profile.emails ? profile.emails[0].value : "No email",
             password: "", // OAuth doesn't need pw.
+            role: "admin",
           };
           database.push(user); // add user to the database
           console.log(`New user added: ${user.name}`);
