@@ -20,7 +20,9 @@ router.get("/login", forwardAuthenticated, (req, res) => {
 router.get('/github', 
   passport.authenticate('github', 
   { 
-    scope: ['user:email'],
+    // Determine the user's access scope for GitHub user's profile.
+    // retrieve all github users emails.
+    scope: ['user:email'], 
    })
   );
 
